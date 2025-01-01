@@ -1,14 +1,10 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import Comments from '../components/Comments';
 const apiUrl = import.meta.env.PUBLIC_API_BASE_URL;
 ---
 
-<html>
-  <head>
-    <title>Comments Page</title>
-  </head>
-  <body>
-    <h1>Comments for Post</h1>
-    <Comments slug="hello-world" apiUrl={apiUrl} client:load />
-  </body>
-</html>
+<Layout title="Comments Page">
+  <h1 class="text-3xl font-bold mb-6 text-gray-800">Comments for Post</h1>
+  <Comments slug="hello-world" apiUrl={apiUrl} client:load />
+</Layout>
