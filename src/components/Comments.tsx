@@ -1,13 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "./ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -54,7 +47,7 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       author: "",
-      comment: "",
+      body: "",
     },
   });
   //
@@ -66,6 +59,7 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
     post_slug: z.string().optional(),
   });
 
+  /*****
   // Schema for metadata in responses
   const metaSchema = z.object({
     served_by: z.string(),
@@ -91,11 +85,9 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
     meta: metaSchema,
     results: z.array(commentSchema).length(1), // Expects exactly one comment
   });
+*******/
 
   type Comment = z.infer<typeof commentSchema>;
-  type GetResponse = z.infer<typeof getResponseSchema>;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  type PostResponse = z.infer<typeof postResponseSchema>;
 
   const responseSchema = z.object({
     success: z.boolean(),
@@ -130,7 +122,7 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
     ],
     [],
   );
-
+  /*****
   // eslint-disable-next-line
   const dummyDataFetch = () => {
     new Promise((resolve) =>
@@ -141,7 +133,7 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
       setIsLoading(false);
     });
   };
-
+*****/
   useEffect(() => {
     console.log("apiUrl: ", url);
     console.log("Fetching comments");
@@ -223,7 +215,6 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
             name="author"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Your name</FormLabel>
                 <FormControl>
                   <Input
                     type="text"
@@ -241,7 +232,6 @@ const Comments: React.FC<CommentsProps> = ({ slug, apiUrl }) => {
             name="body"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Your name</FormLabel>
                 <FormControl>
                   <Textarea placeholder="Your comment" required {...field} />
                 </FormControl>
