@@ -1,4 +1,6 @@
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import MainMenu from "./MainMenu";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   return (
@@ -11,33 +13,8 @@ export default function Header() {
               <span className="ml-2 text-xl font-bold">Short It!</span>
             </a>
           </div>
-
-          <nav className="hidden md:block">
-            <ul className="flex space-x-4">
-              <li>
-                <a href="/" className="text-sm font-medium hover:text-primary">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  className="text-sm font-medium hover:text-primary"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/blog"
-                  className="text-sm font-medium hover:text-primary"
-                >
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
-
+          <MainMenu />
+          <MobileMenu />
           <div className="flex items-center">
             <ThemeSwitcher />
           </div>

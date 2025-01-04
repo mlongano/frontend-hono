@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 
 import { PropsWithChildren } from "react";
+import { TailwindIndicator } from "./TailwindIndicator";
 
 export default function Layout({ children }: PropsWithChildren) {
   const getThemePreference = () => {
@@ -40,6 +41,7 @@ export default function Layout({ children }: PropsWithChildren) {
           {children}
         </div>
       </main>
+      <TailwindIndicator />
     </>
   );
 }
