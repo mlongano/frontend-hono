@@ -1,6 +1,4 @@
 "use client";
-
-import * as React from "react";
 import { Laptop, Moon, Sun } from "lucide-react";
 import { Button } from "./ui/button";
 import {
